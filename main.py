@@ -33,8 +33,8 @@ def get_emojies():
     return ['😆', '💀', '😈', '👻', '🤘']  # default emoji list
 
 
-@app.route("<path_arg:path>")
-async def handle(request, path_arg):
+# @app.get("<path_arg:path>")
+async def handle(request, path_arg=''):
     gen = emojies_generator(get_emojies())
 
     def repl_func(match):
@@ -48,4 +48,6 @@ async def handle(request, path_arg):
 
 
 if __name__ == '__main__':
-    app.run('localhost', 9000, debug=True)
+    app.add_route(handle, '/')
+    app.add_route(handle, '<path_arg:path>')
+    app.run('localhost', 9001, debug=True)

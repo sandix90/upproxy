@@ -60,10 +60,9 @@ async def test_correct_replace(mocker, response):
     r = Request(
         b'/test', headers={}, version=b'2.0', method=b'GET', transport=None, app='test'
     )
-    route, handler = handle
-    a = await handler(r, 'test_path')
 
+    resp = await handle(r, 'test_path')
 
-    result = a.body.decode('utf8')
+    result = resp.body.decode('utf8')
     assert result == 'привет1 привет2 при dtn привет3 привет4 привет1'
 
