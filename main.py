@@ -50,4 +50,4 @@ async def handle(request, path_arg=''):
 if __name__ == '__main__':
     app.add_route(handle, '/')
     app.add_route(handle, '<path_arg:path>')
-    app.run('localhost', 9001, debug=True)
+    app.run('localhost', 9000, debug=True)
